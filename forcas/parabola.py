@@ -1,3 +1,6 @@
+from math import sqrt
+
+
 class World:
     """
     Representa o conjunto de todos os objetos na simulacao.
@@ -6,9 +9,10 @@ class World:
     WIDTH = 800
     HEIGHT = 600  
     
-    def __init__(self, objects=[], gravity=0):
+    def __init__(self, objects=[], gravity=0, gravity_z=0):
         self.objects = list(objects)
         self.gravity = gravity
+        self.gravity_z = gravity_z
         
     def draw(self):
         """
@@ -31,6 +35,8 @@ class World:
         self.objects.append(obj)
         if obj.gravity == 0:
             obj.gravity = self.gravity
+        if obj.gravity_z == 0:
+            obj.gravity_z = self.gravity_z
 
 
 class PhysObj:
@@ -38,7 +44,7 @@ class PhysObj:
     Representa um objeto com uma fisica associada.
     """
     def __init__(self, actor, mass=1, x=0, y=0, vx=0, vy=0, 
-                 gravity=0, gravity_z=0, damping=0, mu=0):
+                 gravity=0, gravity_z=0, damping=0, mu=0, drag=0):
         self.actor = actor
         self.x = x
         self.y = y
@@ -51,10 +57,32 @@ class PhysObj:
         self.gravity_z = gravity_z
         self.damping = damping
         self.mu = mu
+        self.drag = drag
         
     def update(self, dt):
-        ax = self.fx / self.mass - self.damping * self.vx
-        ay = self.fy / self.mass - self.gravity - self.damping * self.vy
+        # Calcula a aceleracao devido ao atrito
+        v_abs = sqrt(self.vx**2 + self.vy**2)
+        ux = self.vx / v_abs
+        uy = self.vy / v_abs
+        friction_x = -self.mu * self.gravity_z * ux
+        friction_y = -self.mu * self.gravity_z * uy
+        
+        # Arrasto aerodinamico
+        drag_x = -self.drag * ux * self.vx**2 
+        drag_y = -self.drag * ux * self.vy**2
+        
+        # Aceleracao devido a forca de dissipacao viscosa
+        damping_x = -self.damping * self.vx
+        damping_y = -self.damping * self.vy
+        
+        # Aceleracao da gravidade
+        gravity_x = 0
+        gravity_y = -self.gravity
+        
+        # Soma todas as forcas
+        ax = self.fx / self.mass + friction_x + damping_x + gravity_x + drag_x
+        ay = self.fy / self.mass + friction_y + damping_y + gravity_y + drag_y  
+        
         self.vx += ax * dt
         self.vy += ay * dt
         self.x += self.vx * dt + ax * dt**2 / 2
@@ -87,10 +115,11 @@ def draw():
 WIDTH = World.WIDTH = 800
 HEIGHT = World.HEIGHT = 600
 
-speed = 300
-world = World(gravity=0)
-bird1 = PhysObj(Actor('bird0'), x=50, y=50, vx=speed, vy=1.5*speed)
-bird2 = PhysObj(Actor('bird1'), x=50, y=100, vx=speed, vy=1.5*speed, damping=2)
+speed = 400
+world = World(gravity=0, gravity_z=100)
+bird1 = PhysObj(Actor('bird0'), x=50, y=50, vx=speed, vy=speed, mu=1.4142)
+bird2 = PhysObj(Actor('birddead'), x=50, y=50, vx=speed, vy=speed, damping=0.5)
+bird3 = PhysObj(Actor('bird2'), x=50, y=50, vx=speed, vy=speed, drag=0.0035)
 world.add(bird1)
 world.add(bird2)
-
+world.add(bird3)
