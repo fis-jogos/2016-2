@@ -1,5 +1,7 @@
+import sys; sys.path.append('.')
 from math import sqrt
-
+from phys import World
+print(sorted(sys.modules.keys()))
 
 class World:
     """
