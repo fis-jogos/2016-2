@@ -6,9 +6,6 @@ p2 = world.add.aabb(shape=(20, 120), pos=(30, 300), mass='inf')
 c1 = world.add.circle(20, pos=(400, 300), color='red')
 c2 = world.add.circle(10, pos=(450, 300), color='green')
 
-@listen('key-up', 'space')
-def start():
-    c1.vel = vel.random()
 
 @listen('long-press', 'up', dy=5)
 @listen('long-press', 'down', dy=-5)
