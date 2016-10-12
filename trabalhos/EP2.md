@@ -13,7 +13,7 @@ sua mecânica de funcionamento. Este jogo será refinado nos próximos EPs. Preo
 em incluir todos os elementos principais, mesmo que exija refinamento em termos
 de gráficos, fluidez, jogabilidade, etc.
 
-Valor: 2000pts
+Valor: 1000pts
 
 ## Descrição
 Espera-se que cada aluno dedique em torno de 6h de trabalho na simulação. Cada
@@ -36,14 +36,14 @@ Um modelo de repositório está no arquivo README.rst nesta mesma pasta.
 ## Avaliação
 Critérios:
 
-* 300 pts - Qualidade artística
-* 400 pts - Jogabilidade
-* 400 pts - Interação do jogador com a física
-* 400 pts - Organização e qualidade do código
+* 150 pts - Qualidade artística
+* 200 pts - Jogabilidade
+* 200 pts - Interação do jogador com a física
+* 200 pts - Organização e qualidade do código
     * Implementou a simulação corretamente?
     * Evitou macarronada?
     * Usou boas práticas?
-* 500 pts - Qualidade da implementação física
+* 250 pts - Qualidade da implementação física
     * Identificou e modelou as forças corretamente?
     * Justificou as simplificações? 
 
