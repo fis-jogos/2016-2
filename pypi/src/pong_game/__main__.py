@@ -11,7 +11,6 @@ def get_parser():
     parser = argparse.ArgumentParser('pong-game')
     version = '%(prog)s ' + __version__
     parser.add_argument('--version', '-v', action='version', version=version)
-    parser.add_argument('--foo', '-f', action='store_true')
     return parser
 
 def main(args=None):
@@ -27,10 +26,10 @@ def main(args=None):
     parser = get_parser()
     args = parser.parse_args(args)
     
-    if args.foo:
-        print('foobar')
-    else:
-        run()    
+    # Roda jogo!
+    import pong_game.pong
+    run()
 
 if __name__ == '__main__':
     main()
+    

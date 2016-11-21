@@ -56,6 +56,11 @@ setup(
             'python-boilerplate[dev]',
         ],
     },
+    package_data={
+        'pong_game': [
+            'images/*.*',
+        ],
+    },
     
     # Main script
     entry_points={

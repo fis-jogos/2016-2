@@ -5,6 +5,7 @@ p1 = world.add.aabb(shape=(20, 120), pos=(770, 300), mass='inf')
 p2 = world.add.aabb(shape=(20, 120), pos=(30, 300), mass='inf')
 c1 = world.add.circle(20, pos=(400, 300), color='red')
 c2 = world.add.circle(10, pos=(450, 300), color='green')
+c1.vel = vel.random()
 
 
 @listen('long-press', 'up', dy=5)
@@ -21,4 +22,5 @@ def p2_play():
         p2.move(0, -5)
     else:
         p2.move(0, 5)
+
 

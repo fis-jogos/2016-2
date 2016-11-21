@@ -1,0 +1,23 @@
+Lista de exercícios - Prova 1
+=============================
+
+Lista de exercícios para a prova 2. 
+
+* Nota: 0pts (mas ajuda a se preparar para a prova)
+* A prova terá 5 exercícios com a temática diversificada dentro do tema da prova.
+* Destes 5, garanto que pelo menos 3 serão muito parecidos com algum exercício
+  da lista. Portanto se prepare para não ter surpresas.
+* Física, matemática e progamação se aprende com o braço :)
+
+A lista se baseia no Halliday 7a ed.
+
+Capítulo 3
+    questionário: 2, 3, 4, 9, 12, 13, 14
+    exercícios: 2, 5, 8, 12, 15, 29, 41, 45, 46, 48, 52
+
+Capítulo 4
+    questionário: 2, 7, 9, 12 
+    exercícios: 18, 19, 27, 38, 62, 63, 65, 79, 88 
+    
+Lista 2.pdf: Todos exceto o último exercício.
+    
