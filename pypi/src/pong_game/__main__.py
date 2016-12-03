@@ -1,6 +1,5 @@
 import argparse
 import pong_game
-from FGAme import run
 from pong_game import __version__
 
 
@@ -27,8 +26,8 @@ def main(args=None):
     args = parser.parse_args(args)
     
     # Roda jogo!
-    import pong_game.pong
-    run()
+    from pong_game.pong import start_game
+    start_game()
 
 if __name__ == '__main__':
     main()
